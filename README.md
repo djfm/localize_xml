@@ -70,3 +70,4 @@ Once the file comes back, integrate it like this:
 integrate_xml_translatable_strings.rb path/to/translatable_strings.xlsx path/to/dir/containing/xml/files
 ```
 
+Your xml files are now exactly the same as before BUT with all translatable contents replaced with the translation!
