@@ -39,7 +39,7 @@ A line like
 ```
 group.xml,//group/@name
 ```
-means: extract all attributes from nodes named group in the file named group.xml
+means: extract all 'name' attributes from nodes named 'group' in the file named 'group.xml'
 
 Specify only one xpath per line. You can have as many lines as you want per file.
 
