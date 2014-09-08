@@ -28,6 +28,14 @@ end
 strings = []
 
 fileXPaths.each_pair do |file, xPaths|
+
+	if file.include? "?"
+		unless ARGV[2]
+			abort "Please specify the language (needed because a path contains a question mark)"
+		end
+		file = file.gsub "?", ARGV[2]
+	end
+
 	if File.file? filePath="#{xmls_path}/#{file}"
 		xmlDoc  = REXML::Document.new(File.new(filePath))
 		xPaths.each do |xPath|
@@ -46,7 +54,7 @@ strings.sort! do |a,b|
 	a[:file]+a[:xpath] <=> b[:file]+b[:xpath]
 end
 
-workbook  = WriteExcel.new(ARGV[2] || "translatable_strings.xlsx")
+workbook  = WriteExcel.new "translatable_strings.xlsx"
 worksheet = workbook.add_worksheet "Translations"
 
 worksheet.write 0, 0, %w(file xpath string translation)
